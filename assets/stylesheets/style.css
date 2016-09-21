@@ -1,0 +1,22 @@
+h1 {
+	color: blue;
+}
+.smallFrame {
+	border:solid 1px black;
+	text-align: center;
+	border-radius:10px;
+	width:20%;
+	padding:10px;
+	margin:15px auto;
+}
+.largeFrame {
+	border:solid 1px black;
+	text-align: center;
+	border-radius:10px;
+	width:30%;
+	padding:10px;
+	margin:15px auto;
+}
+.errors {
+	color: red;
+}
