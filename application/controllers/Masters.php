@@ -23,16 +23,26 @@ class Masters extends CI_Controller {
 	// 	// $this->output->enable_profiler();
 	// 	date_default_timezone_set('America/Los_Angeles');
 	// }
-	public function index()
-	{
-		$this->load->view('home');
-	}
-	public function user()
-	{
-		$this->load->view('profile');
-	}
-	public function review()
-	{
+	public function addbooks() {
+		// $post = $this->input->post();
+		// $this->Product->stock($post);
+		// $id = $this->db->insert_id();
 		$this->load->view('review');
 	}
+	public function user($id) {
+		// $post = $this->input->post();
+		// $this->Product->stock($post);
+		// $id = $this->db->insert_id();
+		$this->load->view('profile');
+	}
+	public function book($id) {
+		// $post = $this->input->post();
+		// $this->Product->stock($post);
+		// $id = $this->db->insert_id();
+		$this->load->view('book');
+	}
+	public function kill() {
+        $this->session->sess_destroy();
+        redirect('/');
+    }
 }

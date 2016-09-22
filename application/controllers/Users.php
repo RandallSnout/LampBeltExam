@@ -45,18 +45,18 @@ class Users extends CI_Controller {
 	    $result = $this->User->loginValidate($this->input->post());
 	    if($result == "valid") {
 	      $id = $this->User->login($this->input->post());
-	      $success[] = 'Welcome! Login was successful!';
-	      $this->session->set_flashdata('success', $success);
+	      $success2[] = 'Welcome! Login was successful!';
+	      $this->session->set_flashdata('success2', $success2);
 	      redirect('/users/show/' . $id['id']);
 	    } else {
-	      $errors = array(validation_errors());
-	      $this->session->set_flashdata('errors', $errors);
+	      $errors2 = array(validation_errors());
+	      $this->session->set_flashdata('errors2', $errors2);
 	      redirect('/');
 	    }
 	}
 	public function show($id) {
 		$this->load->model('User');
     	$data['user'] = $this->User->find($id);
-    	$this->load->view('home', $data);
+    	$this->load->view('board', $data);
 	}
 }

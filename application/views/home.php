@@ -17,7 +17,7 @@
 	</nav>	
 	<div class="container">
 		<div class="col-md-5 outlined">
-		<div id='errors'>
+			<div class='errors'>
 <?php 
 				  if($this->session->flashdata('errors')) {
 				    foreach($this->session->flashdata('errors') as $value) { 
@@ -27,8 +27,8 @@
 		  			}	
 			    } 
 ?>
-				</div>
-				<div id='success'>
+			</div>
+			<div class='success'>
 <?php 
 	  				if($this->session->flashdata('success')) {
 	    				foreach($this->session->flashdata('success') as $value) { 
@@ -40,7 +40,7 @@
 ?>
 			</div>
 			<h1>Register</h1>
-			<form action="signUp">
+			<form action="signUp" method="post">
 			<div class="form-group">
 				<label>Name:</label>
 				<input type="text" name="name" class="form-control" placeholder="Name">
@@ -59,16 +59,38 @@
 			</div>
 			<div class="form-group">
 				<label>Confirm Password:</label>
-				<input type="password" name="confirm_password" class="form-control" placeholder="Password">
+				<input type="password" name="password_check" class="form-control" placeholder="Password">
 			</div>
 			<div class="form-group">
-				<button type="submit" class="btn btn-success pull-right">Register</button>
+				<button type="submit" name="submit" class="btn btn-success pull-right">Register</button>
 			</div>
 			</form>
 		</div>
 		<div class="col-md-5 col-md-offset-1 outlined">
+				<div class='errors'>
+<?php 
+				  if($this->session->flashdata('errors2')) {
+				    foreach($this->session->flashdata('errors2') as $value) { 
+?>
+      				<p><?= $value ?></p>
+<?php
+		  			}	
+			    } 
+?>
+				</div>
+				<div class='success'>
+<?php 
+	  				if($this->session->flashdata('success2')) {
+	    				foreach($this->session->flashdata('success2') as $value) { 
+?>
+      				<p><?= $value ?></p>
+<?php
+	    				}
+	  				} 
+?>
+			</div>
 			<h1>Sign In</h1>
-			<form action="signIn">
+			<form action="signIn" method="post">
 			<div class="form-group">
 				<label>Email address:</label>
 				<input type="email" name="email" class="form-control" placeholder="Email">

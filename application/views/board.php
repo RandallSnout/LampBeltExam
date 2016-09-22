@@ -4,26 +4,26 @@
 	    <!-- Brand and toggle get grouped for better mobile display -->
 	    <div class="col-md-9 col-md-offset-1">
 		    <div class="navbar-header">
-		      <a class="navbar-brand" href="#">Books Review</a>
+		      <a class="navbar-brand" href="/">Books Review</a>
 		      <ul class="nav navbar-nav navbar-left">
 					<li><a href="/">Home</a></li>
 				</ul>
 		    </div>
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="review">Add Book Review</a></li>
-				<li><a href="logoOut">Log Out</a></li>
+				<li><a href="/addBook">Add Book Review</a></li>
+				<li><a href="/logOut">Log Out</a></li>
 			</ul>
 	      </div>
 	  </div><!-- /.container-fluid -->
 	</nav>	
 	<div class="container">
-		<h1>Welcome User!</h1>
+		<h1>Welcome <?= $user['alias'] ?>!</h1>
 		<div class="col-md-7">
 			<h2>Recent Book Reviews</h2> 
 			<div class="book">
-				<h3>Book Name Here</h3>
+				<h3><a href="/book/<?= $book['id'] ?>">Book Name Here</a> </h3>
 				<h4>Rating:<span>Stars Here</span></h4>
-				<p><a href="users">User Name</a> says: comment here</p>
+				<p><a href="/user/<?= $user['id'] ?>">User Name</a> says: comment here</p>
 				<p>Posted on: Date of creation here</p>
 			</div>
 		</div>
