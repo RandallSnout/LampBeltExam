@@ -27,8 +27,12 @@ class Masters extends CI_Controller {
 	{
 		$this->load->view('home');
 	}
-	public function login()
+	public function user()
 	{
-		$this->load->view('board');
+		$this->load->view('profile');
+	}
+	public function review()
+	{
+		$this->load->view('review');
 	}
 }

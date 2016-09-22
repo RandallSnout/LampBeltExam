@@ -17,6 +17,28 @@
 	</nav>	
 	<div class="container">
 		<div class="col-md-5 outlined">
+		<div id='errors'>
+<?php 
+				  if($this->session->flashdata('errors')) {
+				    foreach($this->session->flashdata('errors') as $value) { 
+?>
+      				<p><?= $value ?></p>
+<?php
+		  			}	
+			    } 
+?>
+				</div>
+				<div id='success'>
+<?php 
+	  				if($this->session->flashdata('success')) {
+	    				foreach($this->session->flashdata('success') as $value) { 
+?>
+      				<p><?= $value ?></p>
+<?php
+	    				}
+	  				} 
+?>
+			</div>
 			<h1>Register</h1>
 			<form action="signUp">
 			<div class="form-group">
@@ -46,7 +68,7 @@
 		</div>
 		<div class="col-md-5 col-md-offset-1 outlined">
 			<h1>Sign In</h1>
-			<form action="login">
+			<form action="signIn">
 			<div class="form-group">
 				<label>Email address:</label>
 				<input type="email" name="email" class="form-control" placeholder="Email">

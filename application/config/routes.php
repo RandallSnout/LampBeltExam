@@ -51,7 +51,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 
 // this is the default controller. You need to change it depending on your project
-$route['default_controller'] = 'Masters';
-$routes['login'] = 'Masters/login';
+$route['default_controller'] = 'Users';
+$route['signIn'] = 'Users/login';
+$route['signUp'] = 'Users/register';
+$route['user'] = 'Masters/user';
+$route['review'] = 'Masters/review'; 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
