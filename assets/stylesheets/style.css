@@ -1,21 +1,11 @@
 h1 {
 	color: blue;
 }
-.smallFrame {
-	border:solid 1px black;
-	text-align: center;
-	border-radius:10px;
-	width:20%;
-	padding:10px;
-	margin:15px auto;
-}
-.largeFrame {
-	border:solid 1px black;
-	text-align: center;
-	border-radius:10px;
-	width:30%;
-	padding:10px;
-	margin:15px auto;
+.outlined {
+	border:1px solid lightgrey;
+	border-radius: 10px;
+	padding-bottom: 10px;
+	margin-bottom: 20px;
 }
 .errors {
 	color: red;

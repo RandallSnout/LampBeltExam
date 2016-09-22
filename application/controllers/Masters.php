@@ -20,7 +20,7 @@ class Masters extends CI_Controller {
 	 */
 	public function __construct() {
 		parent::__construct();
-		$this->output->enable_profiler();
+		// $this->output->enable_profiler();
 		date_default_timezone_set('America/Los_Angeles');
 	}
 	public function index()
