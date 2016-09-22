@@ -18,11 +18,11 @@ class Masters extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function __construct() {
-		parent::__construct();
-		// $this->output->enable_profiler();
-		date_default_timezone_set('America/Los_Angeles');
-	}
+	// public function __construct() {
+	// 	parent::__construct();
+	// 	// $this->output->enable_profiler();
+	// 	date_default_timezone_set('America/Los_Angeles');
+	// }
 	public function index()
 	{
 		$this->load->view('home');
