@@ -18,10 +18,11 @@
 	</nav>	
 	<div class="container">
 		<div class="col-md-7">
-			<h1>User Alias:<?= $alias ?></h1>
-			<h2>Name:<?= $name ?></h2>
-			<h2>Email:<?= $email ?></h2>
-			<h3>Total Reviews: #</h3>
+			<h1><?= $destination ?></h1>
+			<h2>Planned By:<?= $name ?></h2>
+			<h2>Description:<?= $description ?></h2>
+			<h3>Travel Date From:<?= $startD ?></h3>
+			<h3>Travel Date From:<?= $endD ?></h3>
 		</div>
 	</div>
 </body>

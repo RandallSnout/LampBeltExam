@@ -3,35 +3,27 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Users extends CI_Controller {
 
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see https://codeigniter.com/user_guide/general/urls.html
-	 */
-	// public function __construct() {
-	// 	parent::__construct();
-	// 	// $this->output->enable_profiler();
-	// 	date_default_timezone_set('America/Los_Angeles');
-	// }
+	public function __construct() {
+		parent::__construct();
+		// $this->output->enable_profiler();
+		date_default_timezone_set('America/Los_Angeles');
+		$this->load->model('User');
+	}
 	public function index(){
 		$this->load->view('home');
+	}
+	public function userBoard(){
+		$this->session->userdata($id);
+		$data['plans'] = $this->User->pullTrips();
+		$this->load->view('board', $data);
 	}
 	public function register() {
 	    $this->load->model('User');
 	    $result = $this->User->validate($this->input->post());
 	    if($result == "valid") {
-	      $user = $this->User->register($this->input->post());
-	      $this->load->view('board', $user);
+	      $id = $this->User->register($this->input->post());
+	      $data['plans'] = $this->User->pullTrips();
+	      $this->load->view('board', $id, $data);
 	    } else {
 	      $errors = array(validation_errors());
 	      $this->session->set_flashdata('errors', $errors);
@@ -44,6 +36,7 @@ class Users extends CI_Controller {
 	    if($result == "valid") {
 	      $user = $this->User->login($this->input->post());
 	      if($user){
+	      	$this->session->set_userdata($user);
 	  		$this->load->view('board', $user);
 	      }
 	      else {
@@ -58,4 +51,30 @@ class Users extends CI_Controller {
 	      redirect('/');
 	    }
 	}
+	public function user($id) {
+		$this->load->view('profile');
+	}
+	public function addTrip($id) {
+		$this->load->view('addTravel', $id);
+	}
+	public function tripProf($destination) {
+		$data['trip'] = $this->Product->pullTrip($destination);
+		$this->load->view('profile', $data);
+	}
+	public function postTravel() {
+		$this->load->model('User');
+	    $result = $this->User->validateTrip($this->input->post());
+	    if($result == "valid") {
+	      $trip = $this->User->addTrips($this->input->post());
+	      $this->load->view('board', $trip);
+	    } else {
+	      $errors3 = array(validation_errors());
+	      $this->session->set_flashdata('errors3', $errors3);
+	      $this->load->view('addTravel');
+	    }
+	}
+	public function kill() {
+        $this->session->sess_destroy();
+        redirect('/');
+    }
 }

@@ -4,7 +4,7 @@
 	    <!-- Brand and toggle get grouped for better mobile display -->
 	    <div class="col-md-9 col-md-offset-1">
 		    <div class="navbar-header">
-		      <a class="navbar-brand" href="#">Books Review</a>
+		      <a class="navbar-brand" href="#">Travel Buddy</a>
 		      <ul class="nav navbar-nav navbar-left">
 					<li><a href="/">Home</a></li>
 				</ul>
@@ -13,6 +13,7 @@
 	  </div><!-- /.container-fluid -->
 	</nav>	
 	<div class="container">
+		<h1>Welcome Traveler!</h1>
 		<div class="col-md-5 outlined">
 			<div class='errors'>
 <?php 
@@ -32,18 +33,15 @@
 				<input type="text" name="name" class="form-control" placeholder="Name">
 			</div>
 			<div class="form-group">
-				<label>Alias:</label>
-				<input type="text" name="alias" class="form-control" placeholder="Alias">
-			</div>
-			<div class="form-group">
-				<label>Email address:</label>
-				<input type="email" name="email" class="form-control" placeholder="Email">
+				<label>Username:</label>
+				<input type="text" name="username" class="form-control" placeholder="Username">
 			</div>
 			<div class="form-group">
 				<label>Password:</label>
 				<input type="password" name="password" class="form-control" placeholder="Password">
 			</div>
 			<div class="form-group">
+				<p>*Password should be at least 8 characters</p>
 				<label>Confirm Password:</label>
 				<input type="password" name="password_check" class="form-control" placeholder="Password">
 			</div>
@@ -64,11 +62,11 @@
 			    } 
 ?>		
 				</div>
-			<h1>Sign In</h1>
+			<h1>Log In</h1>
 			<form action="signIn" method="post">
 			<div class="form-group">
-				<label>Email address:</label>
-				<input type="email" name="email" class="form-control" placeholder="Email">
+				<label>Username:</label>
+				<input type="text" name="username" class="form-control" placeholder="Username">
 			</div>
 			<div class="form-group">
 				<label>Password:</label>
