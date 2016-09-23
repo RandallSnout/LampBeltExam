@@ -17,13 +17,13 @@
 	  </div><!-- /.container-fluid -->
 	</nav>	
 	<div class="container">
-		<h1>Welcome <?= $user['alias'] ?>!</h1>
+		<h1>Welcome <?= $alias ?>!</h1>
 		<div class="col-md-7">
 			<h2>Recent Book Reviews</h2> 
 			<div class="book">
-				<h3><a href="/book/<?= $book['id'] ?>">Book Name Here</a> </h3>
+				<h3><a href="/book/">Book Name Here</a> </h3>
 				<h4>Rating:<span>Stars Here</span></h4>
-				<p><a href="/user/<?= $user['id'] ?>">User Name</a> says: comment here</p>
+				<p><a href="/user/">User Name</a> says: comment here</p>
 				<p>Posted on: Date of creation here</p>
 			</div>
 		</div>

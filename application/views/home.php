@@ -9,9 +9,6 @@
 					<li><a href="/">Home</a></li>
 				</ul>
 		    </div>
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="nextPage">Sign In</a></li>
-			</ul>
 	      </div>
 	  </div><!-- /.container-fluid -->
 	</nav>	
@@ -26,17 +23,6 @@
 <?php
 		  			}	
 			    } 
-?>
-			</div>
-			<div class='success'>
-<?php 
-	  				if($this->session->flashdata('success')) {
-	    				foreach($this->session->flashdata('success') as $value) { 
-?>
-      				<p><?= $value ?></p>
-<?php
-	    				}
-	  				} 
 ?>
 			</div>
 			<h1>Register</h1>
@@ -76,19 +62,8 @@
 <?php
 		  			}	
 			    } 
-?>
+?>		
 				</div>
-				<div class='success'>
-<?php 
-	  				if($this->session->flashdata('success2')) {
-	    				foreach($this->session->flashdata('success2') as $value) { 
-?>
-      				<p><?= $value ?></p>
-<?php
-	    				}
-	  				} 
-?>
-			</div>
 			<h1>Sign In</h1>
 			<form action="signIn" method="post">
 			<div class="form-group">

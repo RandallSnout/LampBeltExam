@@ -9,7 +9,7 @@ class User extends CI_Model {
     $values = array($post['name'], $post['alias'], $post['email'],
                     md5($post['password']), date("Y-m-d, H:i:s"), date("Y-m-d, H:i:s"));
     $id = $this->db->insert_id($this->db->query($query, $values));
-    return $id;
+    return $this->find($id);
   }
   public function find($id) {
     return $this->db->query("SELECT * FROM users WHERE id = ?", array($id))->row_array();
@@ -30,10 +30,7 @@ class User extends CI_Model {
   public function login($post) {
     $query = "SELECT * FROM users WHERE email = ? AND password = ?";
     $values = array($post['email'], md5($post['password']));
-
-
-    $id = $this->db->query($query, $values)->row_array();
-    return $id;
+    return $this->db->query($query, $values)->row_array();
   }
   public function loginValidate($post) {
     $this->load->library('form_validation');

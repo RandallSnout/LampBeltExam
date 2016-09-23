@@ -19,7 +19,7 @@
 	<div class="container">
 		<div class="col-md-12">
 			<h1>Add a New Book Title and a Review</h1>
-			<form class="form-class form-horizontal" action="book">
+			<form class="form-class form-horizontal" action="book" method="post">
 				<div class="form-group">
 					<label>Book Title:</label>
 					<input class="form-control"  type="text" name="title">
@@ -34,12 +34,12 @@
 					<p>Or add a new author</p>
 					</div>
 					<div class="col-md-4">
-					<select class="form-control" name="author">
-						<option>Author 1</option>
+					<select class="form-control" name="author1">
+						<option disabled selected="">Pick an Author</option>
 						<option>Author 2</option>
 						<option>Author 3</option>
 					</select>
-					<input class="form-control" type="text" name="newAuthor">
+					<input class="form-control" type="text" name="author">
 					</div></div>
 					<div class="row">
 					<label>Review:</label>
@@ -50,7 +50,8 @@
 				<div class="row">
 				<div class="form-inline">
 					<label>Rating:</label>
-					<select class="form-control">
+					<select class="form-control" name='stars'>
+						<option disabled selected="">Select Stars</option>
 						<option>1</option>
 						<option>2</option>
 						<option>3</option>

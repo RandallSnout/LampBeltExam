@@ -10,15 +10,18 @@
 				</ul>
 		    </div>
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="review">Add Book Review</a></li>
-				<li><a href="logoOut">Log Out</a></li>
+				<li><a href="/addBook">Add Book Review</a></li>
+				<li><a href="/logoOut">Log Out</a></li>
 			</ul>
 	      </div>
 	  </div><!-- /.container-fluid -->
 	</nav>	
 	<div class="container">
 		<div class="col-md-7">
-			
+			<h1>User Alias:<?= $alias ?></h1>
+			<h2>Name:<?= $name ?></h2>
+			<h2>Email:<?= $email ?></h2>
+			<h3>Total Reviews: #</h3>
 		</div>
 	</div>
 </body>

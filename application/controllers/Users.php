@@ -30,10 +30,8 @@ class Users extends CI_Controller {
 	    $this->load->model('User');
 	    $result = $this->User->validate($this->input->post());
 	    if($result == "valid") {
-	      $id = $this->User->register($this->input->post());
-	      $success[] = 'Welcome! Registration was successful!';
-	      $this->session->set_flashdata('success', $success);
-	      redirect('/users/show/' . $id);
+	      $user = $this->User->register($this->input->post());
+	      $this->load->view('board', $user);
 	    } else {
 	      $errors = array(validation_errors());
 	      $this->session->set_flashdata('errors', $errors);
@@ -44,19 +42,20 @@ class Users extends CI_Controller {
 	    $this->load->model('User');
 	    $result = $this->User->loginValidate($this->input->post());
 	    if($result == "valid") {
-	      $id = $this->User->login($this->input->post());
-	      $success2[] = 'Welcome! Login was successful!';
-	      $this->session->set_flashdata('success2', $success2);
-	      redirect('/users/show/' . $id['id']);
-	    } else {
+	      $user = $this->User->login($this->input->post());
+	      if($user){
+	  		$this->load->view('board', $user);
+	      }
+	      else {
+	      	$errors2 = array('No such user exists. Try retyping your info or registering');
+	      	$this->session->set_flashdata('errors2', $errors2);
+			redirect('/');
+	      }
+	    } 
+	    else {
 	      $errors2 = array(validation_errors());
 	      $this->session->set_flashdata('errors2', $errors2);
 	      redirect('/');
 	    }
-	}
-	public function show($id) {
-		$this->load->model('User');
-    	$data['user'] = $this->User->find($id);
-    	$this->load->view('board', $data);
 	}
 }
