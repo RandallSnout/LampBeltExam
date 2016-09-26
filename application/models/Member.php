@@ -26,7 +26,7 @@ class Member extends CI_Model {
 	}
 
   	public function pullMyTrips() {
-	    $query = "SELECT name, schedule.destination, schedule.plan, schedule.start_date, schedule.end_date 
+	    $query = "SELECT name,schedule.id, schedule.destination, schedule.plan, schedule.start_date, schedule.end_date 
 				FROM users 
 				JOIN schedule ON users.id = schedule.users_id
 				WHERE users.id = ?";
