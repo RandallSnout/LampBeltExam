@@ -10,7 +10,7 @@
 				</ul>
 		    </div>
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="/logoOut">Log Out</a></li>
+				<li><a href="/logOut">Log Out</a></li>
 			</ul>
 	      </div>
 	  </div><!-- /.container-fluid -->
