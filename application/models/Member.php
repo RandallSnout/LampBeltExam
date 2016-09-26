@@ -25,24 +25,24 @@ class Member extends CI_Model {
 		return  $this->db->query($query, $value)->result_array();
 	}
 
-  	// public function pullMyTrips() {
-	  //   $query = "SELECT name, schedule.destination, schedule.plan, schedule.start_date, schedule.end_date 
-			// 	FROM users 
-			// 	JOIN schedule ON users.id = schedule.users_id
-			// 	WHERE users.id = ?";
-	  //   $value = $this->session->userdata('id');
-	  //   return $this->db->query($query, $value)->result_array();
-  	// }
-
   	public function pullMyTrips() {
-	    $query = "SELECT name, schedule.destination, schedule.plan, schedule.start_date, schedule.end_date
+	    $query = "SELECT name, schedule.destination, schedule.plan, schedule.start_date, schedule.end_date 
 				FROM users 
-				JOIN users_schedule ON users.id = users_schedule.users_id
-				JOIN schedule ON schedule.id = users_schedule.schedule_id
+				JOIN schedule ON users.id = schedule.users_id
 				WHERE users.id = ?";
 	    $value = $this->session->userdata('id');
 	    return $this->db->query($query, $value)->result_array();
   	}
+
+  	// public function pullMyTrips() {
+	  //   $query = "SELECT name, schedule.destination, schedule.plan, schedule.start_date, schedule.end_date
+			// 	FROM users 
+			// 	JOIN users_schedule ON users.id = users_schedule.users_id
+			// 	JOIN schedule ON schedule.id = users_schedule.schedule_id
+			// 	WHERE users.id = ?";
+	  //   $value = $this->session->userdata('id');
+	  //   return $this->db->query($query, $value)->result_array();
+  	// }
 
 	public function insertTrip($post) {
 		$query="INSERT INTO schedule (destination, plan, start_date, end_date, created_at, updated_at, users_id) VALUES (?, ?, ?, ?, ?, ?, ?)";

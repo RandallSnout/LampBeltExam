@@ -21,7 +21,7 @@
 <?php 
 			foreach($userTrips as $trip) { 
 ?>
-			<tr><td><?= $trip['destination'] ?></td><td><?= $trip['start_date'] ?></td><td><?= $trip['end_date'] ?></td><td><?= $trip['plan'] ?></td></tr>
+			<tr><td><a href="/destProf/<?= $trip['id'] ?>"><?= $trip['destination'] ?></a></td><td><?= $trip['start_date'] ?></td><td><?= $trip['end_date'] ?></td><td><?= $trip['plan'] ?></td></tr>
 <?php 
 			} 
 ?>
