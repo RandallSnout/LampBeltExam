@@ -17,3 +17,10 @@ h1 {
 .success p{
 	color: ;
 }
+#eventForm .dateContainer .form-control-feedback {
+    top: 0;
+    right: -15px;
+}
+.pad {
+	margin-bottom: 25px;
+}
