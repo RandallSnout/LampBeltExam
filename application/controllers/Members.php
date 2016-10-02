@@ -11,42 +11,41 @@ class Members extends CI_Controller {
 
 	// Set up redirect to home page in order to get all data from tables to go into the page
 	public function home() {
-		$myTrips = $this->Member->pullMyTrips();
-		$otherTrips = $this->Member->pullOtherTrips(); 
+		$todayAppt = $this->Member->pullTodaysAppt(); 
+		$futureAppt = $this->Member->pullFutureAppt(); 
 		$member = $this->session->userdata();
-		$this->load->view('board', array('current_user' => $member, 'userTrips' => $myTrips, 'otherTrips' => $otherTrips ));
+		$this->load->view('board', array('current_user' => $member, 'todays' => $todayAppt, 'futures' => $futureAppt ));
 	}
 
-	// Redirect for trip addition page
-	public function addTrip() {
-		$this->load->view('addTravel');
-	}
-
-	// code to validate and post new trip information
-	public function postTravel() {
-		$result = $this->Member->validateTrip($this->input->post());
+	public function addAppt() {
+		$result = $this->Member->validateAppt($this->input->post());
 	    if($result == "valid") {
-	      $trip = $this->Member->insertTrip($this->input->post());
-	      redirect('/Members/home', $trip);
+	      $appt = $this->Member->insertAppt($this->input->post());
+	      redirect('/Members/home', $appt);
 	    } else {
-	      $errors3 = array(validation_errors());
-	      $this->session->set_flashdata('errors3', $errors3);
-	      redirect('/Members/addTrip');
+	      // $errors = array(validation_errors(), );
+	      $this->session->set_flashdata('errors', $result);
+	      redirect('/Members/home');
 	    }
 	}
 
-	// Direct to trip profile page with info for the trip and the joiners
-	public function tripProfile($id) {
-		$trip = $this->Member->pullTrip($id);
-		$joiners = $this->Member->usersJoining($id);
-		$this->load->view('profile', array('trip' => $trip, 'joiners' => $joiners));
+	public function editAppt($id) {
+		$apptInfo['info'] = $this->Member->singleAppt($id);
+		$this->load->view('editAppointments', $apptInfo);
 	}
 
-	public function join($id) {
-		$this->Member->joiner($id);
+	public function remove($apptID) {
+		$this->Member->removeAppt($apptID);
 		redirect('/Members/home');
-	}	
+	}
 
+	public function update($id) {
+		$post = $this->input->post();
+		// var_dump($info);
+		// die();
+		$this->Member->updateAppt($post);
+		redirect('/Members/home');
+	}
 	// function to logout
 	public function kill() {
         $this->session->sess_destroy();

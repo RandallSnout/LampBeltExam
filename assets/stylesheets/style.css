@@ -24,3 +24,8 @@ h1 {
 .pad {
 	margin-bottom: 25px;
 }
+.white-background {
+	background: white;
+	padding:15px;
+	border-radius:15px;
+}

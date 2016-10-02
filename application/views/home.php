@@ -4,16 +4,13 @@
 	    <!-- Brand and toggle get grouped for better mobile display -->
 	    <div class="col-md-9 col-md-offset-1">
 		    <div class="navbar-header">
-		      <a class="navbar-brand" href="#">Travel Buddy</a>
-		      <ul class="nav navbar-nav navbar-left">
-					<li><a href="/">Home</a></li>
-				</ul>
+		      <a class="navbar-brand" href="#">Appointment Keeper</a>
 		    </div>
 	      </div>
 	  </div><!-- /.container-fluid -->
 	</nav>	
 	<div class="container">
-		<h1>Welcome Traveler!</h1>
+		<h1>Welcome!</h1>
 		<div class="col-md-5 outlined">
 			<div class='errors'>
 <?php 
@@ -33,8 +30,8 @@
 				<input type="text" name="name" class="form-control" placeholder="Name">
 			</div>
 			<div class="form-group">
-				<label>Username:</label>
-				<input type="text" name="username" class="form-control" placeholder="Username">
+				<label>User Email:</label>
+				<input type="email" name="email" class="form-control" placeholder="Email">
 			</div>
 			<div class="form-group">
 				<label>Password:</label>
@@ -44,6 +41,10 @@
 				<p>*Password should be at least 8 characters</p>
 				<label>Confirm Password:</label>
 				<input type="password" name="password_check" class="form-control" placeholder="Password">
+			</div>
+			<div class="form-group">
+				<label>Date Of Birth:</label>
+				<input type="date" name="dateOfBirth" class="form-control" placeholder="MM/DD/YYYY">
 			</div>
 			<div class="form-group">
 				<button type="submit" name="submit" class="btn btn-success pull-right">Register</button>
@@ -65,8 +66,8 @@
 			<h1>Log In</h1>
 			<form action="signIn" method="post">
 			<div class="form-group">
-				<label>Username:</label>
-				<input type="text" name="username" class="form-control" placeholder="Username">
+				<label>User Email:</label>
+				<input type="Email" name="email" class="form-control" placeholder="Email">
 			</div>
 			<div class="form-group">
 				<label>Password:</label>

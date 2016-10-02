@@ -19,8 +19,8 @@ class Users extends CI_Controller {
 	      $this->session->set_userdata($user);
 	      redirect('/Members/home', $user);
 	    } else {
-	      $errors = array(validation_errors());
-	      $this->session->set_flashdata('errors', $errors);
+	      // $errors = array(validation_errors());
+	      $this->session->set_flashdata('errors', $result);
 	      redirect('/');
 	    }
 	}
@@ -43,8 +43,5 @@ class Users extends CI_Controller {
 	      $this->session->set_flashdata('errors2', $errors2);
 	      redirect('/');
 	    }
-	}
-	public function user($id) {
-		$this->load->view('profile');
 	}
 }
