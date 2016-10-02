@@ -59,6 +59,6 @@ $route['logOut'] = 'Members/kill';
 $route['create'] = 'Members/addAppt';
 $route['edit/(:num)'] = 'Members/editAppt/$1';
 $route['delete/(:num)'] = 'Members/remove/$1';
-$route['update/(:num)'] = 'Members/update/$1';
+$route['update/(:num)'] = 'Members/editValidate/$1';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

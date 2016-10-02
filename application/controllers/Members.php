@@ -29,6 +29,18 @@ class Members extends CI_Controller {
 	    }
 	}
 
+	public function editValidate($id) {
+		$result = $this->Member->validateAppt($this->input->post());
+	    if($result == "valid") {
+	    	$appt = $this->Member->updateAppt($this->input->post());
+	    	redirect('/Members/home', $appt);
+	    } else {
+	      // $errors = array(validation_errors(), );
+	      $this->session->set_flashdata('errors', $result);
+	      redirect('/Members/editAppt/'.$id);
+	    }
+	}
+
 	public function editAppt($id) {
 		$apptInfo['info'] = $this->Member->singleAppt($id);
 		$this->load->view('editAppointments', $apptInfo);
@@ -39,13 +51,13 @@ class Members extends CI_Controller {
 		redirect('/Members/home');
 	}
 
-	public function update($id) {
-		$post = $this->input->post();
-		// var_dump($info);
-		// die();
-		$this->Member->updateAppt($post);
-		redirect('/Members/home');
-	}
+	// public function update($id) {
+	// 	$post = $this->input->post();
+	// 	// var_dump($info);
+	// 	// die();
+	// 	$this->Member->updateAppt($post);
+	// 	redirect('/Members/home');
+	// }
 	// function to logout
 	public function kill() {
         $this->session->sess_destroy();

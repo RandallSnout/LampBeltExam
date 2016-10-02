@@ -17,6 +17,18 @@
 	</nav>
 	<div class="container">
 		<div class="col-md-6 col-md-offset-3">
+				<div class='errors'>
+<?php 
+			$errors = $this->session->flashdata('errors');
+				if ($errors) {
+					foreach ($errors as $error) {
+?>
+
+				<p><?= $error ?></p>
+<?php 
+					}; 
+				}; 
+?>
 			<form  action="/update/<?= $info['id'] ?>" method="post">
 				<input type="hidden" name="id" value="<?= $info['id'] ?>">
 				<label>Task</label>
