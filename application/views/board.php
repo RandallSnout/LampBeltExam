@@ -86,12 +86,6 @@
 						<label>Task</label>
 						<input class="form-control" type="text" name="task">
 					</div>
-					<select class="form-control" name="status">
-						<option hidden="" selected="">Set status</option>
-						<option>Done</option>
-						<option>Pending</option>
-						<option>Missed</option>
-					</select>
 					<div class="form-group">
 						<button type="submit" name="submit" class="btn btn-success pull-right">Add</button>
 					</div>

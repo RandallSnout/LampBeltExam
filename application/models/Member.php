@@ -40,7 +40,7 @@ class Member extends CI_Model {
 
 	public function insertAppt($post) {
 		$query="INSERT INTO appointments (task, status, date, time, created_at, updated_at, users_id) VALUES (?, ?, ?, ?, ?, ?, ?)";
-		$values = array($post['task'], $post['status'], $post['date'], $post['time'], date("Y-m-d, H:i:s"), date("Y-m-d, H:i:s"), $this->session->userdata('id'));
+		$values = array($post['task'], 'Pending', $post['date'], $post['time'], date("Y-m-d, H:i:s"), date("Y-m-d, H:i:s"), $this->session->userdata('id'));
 		return $this->db->query($query, $values);
 	}
 
@@ -54,13 +54,6 @@ class Member extends CI_Model {
 		return $this->db->query($query, $apptID);
 	}
 
-	public function pullTrip($id) {
-		$query = "SELECT name, schedule.destination, schedule.plan, schedule.start_date, schedule.end_date 
-				FROM users 
-				JOIN schedule ON users.id = schedule.users_id
-				WHERE schedule.id = ?";
-		return $this->db->query($query, $id)->row_array();
-	}
 
 	public function updateAppt($post) {
 		$query = "UPDATE appointments SET task = ?, status = ?, date = ?, time = ?, updated_at = now() WHERE id = ?";

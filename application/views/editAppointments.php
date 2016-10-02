@@ -23,11 +23,10 @@
 				<div class="form-group">
 					<input class="form-control" type="text" name="task" value="<?= $info['task'] ?>">
 				</div>
-				<label>Status</label>
+				<label>Status: <?= $info['status'] ?></label>
 				<select class="form-control" name="status">
-					<option selected=""><?= $info['status'] ?></option>
-					<option>Done</option>
 					<option>Pending</option>
+					<option>Done</option>
 					<option>Missed</option>
 				</select>
 				<label>Date</label>
