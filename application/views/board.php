@@ -1,4 +1,7 @@
-<?php $this->load->view('header'); ?>
+<?php 
+if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+$this->load->view('header'); 
+?>
 	<nav class="navbar navbar-default">
 	  <div class="container-fluid">
 	    <!-- Brand and toggle get grouped for better mobile display -->
