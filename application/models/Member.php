@@ -14,7 +14,7 @@ class Member extends CI_Model {
 	    } 
 
 	    if ($post['date'] > date('Y-m-d') || $post['date'] == date('Y-m-d')) {
-	    	if ($post['time'] < time('G:i:s')) {
+	    	if ($post['time'] < date('G:i:s')) {
 	    		$errors[] = 'Please enter a future time';
 	    	}
 	    } 
