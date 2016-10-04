@@ -8,6 +8,7 @@ class Member extends CI_Model {
 		$this->form_validation->set_rules('date', "Date", "trim|required");
 		$this->form_validation->set_rules('time', "Time", "trim|required");
 		$this->form_validation->set_rules('task', "Task", "trim|required");
+	    $samsies = $this->Member->sameDate($post);
 	    $errors = array();
 	    if ($post['date'] == date('Y-m-d')) {
 	    	if ($post['time'] < date('G:i:s')) {
@@ -18,7 +19,10 @@ class Member extends CI_Model {
 	    } 
 	    if ($post['date'] < date('Y-m-d')) {
 	      $errors[] = 'Please enter a future date';
-	    } 
+	    }
+		if ($samsies == null) {
+			$errors[] = "Can't double up appointments.";
+		} 
 	    if (!$this->form_validation->run()) {
 	      $errors[] = validation_errors();
 	    }
@@ -28,6 +32,13 @@ class Member extends CI_Model {
 	      return "valid";
 	    }	
 	}
+
+	public function sameDate($post) {
+		$query = "SELECT * FROM appointments WHERE date = ? AND time = ? AND users_id = ?";
+		$values = array($post['date'], $post['time'], $this->session->userdata('id'));
+		return $this->db->query($query, $values)->result_array();
+	}
+
 
 	public function pullFutureAppt() {
 		$id = $this->session->userdata('id');
