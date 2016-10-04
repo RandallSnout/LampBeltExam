@@ -11,7 +11,13 @@ class Member extends CI_Model {
 	    $errors = array();
 	    if ($post['date'] < date('Y-m-d')) {
 	      $errors[] = 'Please enter a future date';
-	    }  
+	    } 
+
+	    if ($post['date'] > date('Y-m-d') || $post['date'] == date('Y-m-d')) {
+	    	if ($post['time'] < time('G:i:s')) {
+	    		$errors[] = 'Please enter a future time';
+	    	}
+	    } 
 	    if (!$this->form_validation->run()) {
 	      $errors[] = validation_errors();
 	    }
