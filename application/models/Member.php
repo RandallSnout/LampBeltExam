@@ -9,14 +9,15 @@ class Member extends CI_Model {
 		$this->form_validation->set_rules('time', "Time", "trim|required");
 		$this->form_validation->set_rules('task', "Task", "trim|required");
 	    $errors = array();
-	    if ($post['date'] < date('Y-m-d')) {
-	      $errors[] = 'Please enter a future date';
-	    } 
-
-	    if ($post['date'] > date('Y-m-d') || $post['date'] == date('Y-m-d')) {
+	    if ($post['date'] == date('Y-m-d')) {
 	    	if ($post['time'] < date('G:i:s')) {
 	    		$errors[] = 'Please enter a future time';
+	    	} else {
+	    		return "valid";
 	    	}
+	    } 
+	    if ($post['date'] < date('Y-m-d')) {
+	      $errors[] = 'Please enter a future date';
 	    } 
 	    if (!$this->form_validation->run()) {
 	      $errors[] = validation_errors();
@@ -31,7 +32,7 @@ class Member extends CI_Model {
 	public function pullFutureAppt() {
 		$id = $this->session->userdata('id');
 		$today = Date('Y-m-d');
-		$query = "SELECT * FROM appointments WHERE date > ? AND users_id = ?";
+		$query = "SELECT * FROM appointments WHERE date > ? AND users_id = ? ORDER BY date asc";
         $value = array($today, $id);
 		return  $this->db->query($query, $value)->result_array();
 	}
@@ -39,7 +40,7 @@ class Member extends CI_Model {
   	public function pullTodaysAppt() {
   		$id = $this->session->userdata('id');
 		$today = Date('Y-m-d');
-	    $query = "SELECT * FROM appointments WHERE date = ? AND users_id = ?";
+	    $query = "SELECT * FROM appointments WHERE date = ? AND users_id = ? ORDER BY time asc";
 	    $value = array($today, $id);
 	    return $this->db->query($query, $value)->result_array();
   	}
