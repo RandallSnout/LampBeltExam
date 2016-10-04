@@ -7,25 +7,26 @@ class Member extends CI_Model {
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('date', "Date", "trim|required");
 		$this->form_validation->set_rules('time', "Time", "trim|required");
-		$this->form_validation->set_rules('task', "Task", "trim|required");
+		$this->form_validation->set_rules('task', "Task", "trim|required|min_length[1]");
+		// var_dump($post);
+		// die();
 	    $samsies = $this->Member->sameDate($post);
 	    $errors = array();
 	    if ($post['date'] == date('Y-m-d')) {
 	    	if ($post['time'] < date('G:i:s')) {
 	    		$errors[] = 'Please enter a future time';
-	    	} else {
-	    		return "valid";
 	    	}
-	    } 
+	    }
 	    if ($post['date'] < date('Y-m-d')) {
 	      $errors[] = 'Please enter a future date';
 	    }
-		if ($samsies == null) {
+		if (!$samsies == null) {
 			$errors[] = "Can't double up appointments.";
 		} 
 	    if (!$this->form_validation->run()) {
 	      $errors[] = validation_errors();
 	    }
+
 	    if (count($errors)) {
 	      return $errors;
 	    } else {
@@ -36,6 +37,10 @@ class Member extends CI_Model {
 	public function sameDate($post) {
 		$query = "SELECT * FROM appointments WHERE date = ? AND time = ? AND users_id = ?";
 		$values = array($post['date'], $post['time'], $this->session->userdata('id'));
+		if (isset($post['id'])) {
+			$query .= " AND id != ?";
+			array_push($values, $post['id']);
+		}
 		return $this->db->query($query, $values)->result_array();
 	}
 

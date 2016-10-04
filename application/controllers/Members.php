@@ -30,7 +30,9 @@ class Members extends CI_Controller {
 	}
 
 	public function editValidate($id) {
-		$result = $this->Member->validateAppt($this->input->post());
+		// var_dump($this->input->post());
+		// die();
+		$result = $this->Member->validateAppt($this->input->post(), $id);
 	    if($result == "valid") {
 	    	$appt = $this->Member->updateAppt($this->input->post());
 	    	redirect('/Members/home', $appt);
